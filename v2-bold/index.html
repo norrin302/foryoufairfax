@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For You, Fairfax | Fairfax City Council</title>
     <style>
-        * {
+        
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -22,6 +22,19 @@
             --white: #FFFFFF;
             --text-dark: #1A1A1A;
             --text-light: #4A4A4A;
+        }
+        /* Logo Banner */
+        .logo-banner {
+            background: var(--cream);
+            border-bottom: 3px solid #1A4D2E;
+            text-align: center;
+            padding: 12px 24px;
+        }
+        .logo-banner img {
+            height: 100px;
+            width: auto;
+            max-width: 450px;
+            object-fit: contain;
         }
 
         html {
@@ -646,6 +659,12 @@
     </style>
 </head>
 <body>
+
+    <!-- Logo Banner -->
+    <div class="logo-banner">
+        <img src="foryoufairfax_logo.png" alt="For You Fairfax Logo" />
+    </div>
+
     <!-- HEADER -->
     <header>
         <div class="header-inner">
@@ -655,9 +674,10 @@
             </div>
             <button class="mobile-menu-btn" onclick="document.querySelector('nav').classList.toggle('active')">☰</button>
             <nav>
-                <a href="#representatives">Representatives</a>
+                <a href="#candidates">Candidates</a>
+                <a href="#priorities">Priorities</a>
                 <a href="#news">News</a>
-                <a href="#get-involved">Get Involved</a>
+                <a href="#connect">Connect</a>
                 <a href="https://stacyforfairfax.com" target="_blank">Stacy Hall</a>
                 <a href="https://rachelforfairfax.com" target="_blank">Rachel McQuillen</a>
                 <a href="https://tom4fairfax.org" target="_blank">Tom Peterson</a>
@@ -666,41 +686,23 @@
     </header>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="candidates">
         <div class="hero-content">
             <h1>Three Voices.<br><span>One Fairfax.</span></h1>
-            <p>Council Members Stacy Hall, Rachel McQuillen, and Tom Peterson are united in their mission to build a brighter, more inclusive Fairfax City for every resident.</p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">Council Members</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Community Focused</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Your Voice Matters</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- REPRESENTATIVES -->
-    <section class="reps-section" id="representatives">
-        <div class="section-inner">
-            <div class="section-header">
-                <span class="section-tag">Your Representatives</span>
-                <h2 class="section-title">Meet the Team</h2>
-            </div>
-            <div class="reps-grid">
+            <p>Council Candidates Stacy Hall, Rachel McQuillen, and Tom Peterson are united in their mission to build a brighter, more inclusive Fairfax City for every resident.</p>
+            
+            <!-- 3-Column Candidate Grid with Quotes and Priority Tags -->
+            <div class="reps-grid" style="margin-top: 60px; text-align: left;">
                 <!-- Stacy Hall -->
                 <div class="rep-card">
                     <div class="rep-avatar">SH</div>
                     <h3 class="rep-name">Stacy Hall</h3>
                     <div class="rep-title">Fairfax City Council</div>
-                    <p class="rep-tagline">Advocate for smart development, public safety, and ensuring every voice is heard in our council chambers.</p>
+                    <blockquote class="rep-quote">"I believe in common-sense solutions that work for families, not political parties."</blockquote>
+                    <div class="rep-tags">
+                        <span class="priority-tag">Smart Development</span>
+                        <span class="priority-tag">Public Safety</span>
+                    </div>
                     <a href="https://stacyforfairfax.com" target="_blank" class="rep-btn">Visit My Site →</a>
                 </div>
                 <!-- Rachel McQuillen -->
@@ -708,7 +710,11 @@
                     <div class="rep-avatar">RM</div>
                     <h3 class="rep-name">Rachel McQuillen</h3>
                     <div class="rep-title">Fairfax City Council</div>
-                    <p class="rep-tagline">Focused on transparency, community engagement, and building bridges across our diverse neighborhoods.</p>
+                    <blockquote class="rep-quote">"Transparency and community engagement aren't just words—they're how I govern."</blockquote>
+                    <div class="rep-tags">
+                        <span class="priority-tag">Transparency</span>
+                        <span class="priority-tag">Community Engagement</span>
+                    </div>
                     <a href="https://rachelforfairfax.com" target="_blank" class="rep-btn">Visit My Site →</a>
                 </div>
                 <!-- Tom Peterson -->
@@ -716,15 +722,121 @@
                     <div class="rep-avatar">TP</div>
                     <h3 class="rep-name">Tom Peterson</h3>
                     <div class="rep-title">Fairfax City Council</div>
-                    <p class="rep-tagline">Committed to fiscal responsibility and sustainable growth while protecting what makes Fairfax special.</p>
+                    <blockquote class="rep-quote">"Fiscal responsibility today means a stronger Fairfax tomorrow."</blockquote>
+                    <div class="rep-tags">
+                        <span class="priority-tag">Fiscal Responsibility</span>
+                        <span class="priority-tag">Sustainable Growth</span>
+                    </div>
                     <a href="https://tom4fairfax.org" target="_blank" class="rep-btn">Visit My Site →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NEWS -->
-    <section class="news-section" id="news">
+    <!-- PRIORITIES SECTION -->
+    <section class="reps-section" id="priorities">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">Our Shared Vision</span>
+                <h2 class="section-title">What We Stand For</h2>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-image" style="background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);">
+                        <span class="news-icon">🏛️</span>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-headline">Transparent Government</h3>
+                        <p class="news-excerpt">Open council meetings, accessible records, and regular town halls to keep every resident informed and involved.</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image" style="background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);">
+                        <span class="news-icon">🌳</span>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-headline">Sustainable Future</h3>
+                        <p class="news-excerpt">Environmental stewardship initiatives that protect our parks, reduce our carbon footprint, and preserve Fairfax's charm.</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image" style="background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);">
+                        <span class="news-icon">🤝</span>
+                    </div>
+                    <div class="news-content">
+                        <h3 class="news-headline">Unified Community</h3>
+                        <p class="news-excerpt">Building bridges across neighborhoods, generations, and backgrounds to strengthen the fabric of Fairfax.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFILE CARDS SECTION -->
+    <section class="news-section" id="profiles">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">Full Profiles</span>
+                <h2 class="section-title">Meet Each Candidate</h2>
+            </div>
+            <div class="reps-grid">
+                <!-- Stacy Hall Profile -->
+                <div class="rep-card" style="text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                        <div class="rep-avatar" style="margin: 0; width: 70px; height: 70px; font-size: 24px;">SH</div>
+                        <div>
+                            <h3 class="rep-name" style="margin-bottom: 0;">Stacy Hall</h3>
+                            <div class="rep-title" style="margin-bottom: 0;">Council Candidate</div>
+                        </div>
+                    </div>
+                    <p class="rep-tagline" style="margin-bottom: 20px;">A lifelong Fairfax resident with 15 years of community service, Stacy has championed local businesses and fought for safer neighborhoods.</p>
+                    <ul style="list-style: none; margin-bottom: 24px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--cream-dark); color: var(--text-light);">✓ Small Business Advocate</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--cream-dark); color: var(--text-light);">✓ Public Safety Committee</li>
+                        <li style="padding: 8px 0; color: var(--text-light);">✓ Veterans Affairs Volunteer</li>
+                    </ul>
+                    <a href="https://stacyforfairfax.com" target="_blank" class="rep-btn">Learn More →</a>
+                </div>
+                <!-- Rachel McQuillen Profile -->
+                <div class="rep-card" style="text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                        <div class="rep-avatar" style="margin: 0; width: 70px; height: 70px; font-size: 24px;">RM</div>
+                        <div>
+                            <h3 class="rep-name" style="margin-bottom: 0;">Rachel McQuillen</h3>
+                            <div class="rep-title" style="margin-bottom: 0;">Council Candidate</div>
+                        </div>
+                    </div>
+                    <p class="rep-tagline" style="margin-bottom: 20px;">An educator and community organizer, Rachel brings people together across differences to find common ground on the issues that matter.</p>
+                    <ul style="list-style: none; margin-bottom: 24px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--cream-dark); color: var(--text-light);">✓ School Board Alumni</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--cream-dark); color: var(--text-light);">✓ Neighborhood Association Lead</li>
+                        <li style="padding: 8px 0; color: var(--text-light);">✓ Housing Affordability Task Force</li>
+                    </ul>
+                    <a href="https://rachelforfairfax.com" target="_blank" class="rep-btn">Learn More →</a>
+                </div>
+                <!-- Tom Peterson Profile -->
+                <div class="rep-card" style="text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+                        <div class="rep-avatar" style="margin: 0; width: 70px; height: 70px; font-size: 24px;">TP</div>
+                        <div>
+                            <h3 class="rep-name" style="margin-bottom: 0;">Tom Peterson</h3>
+                            <div class="rep-title" style="margin-bottom: 0;">Council Candidate</div>
+                        </div>
+                    </div>
+                    <p class="rep-tagline" style="margin-bottom: 20px;">A small business owner and financial planner, Tom understands how to balance budgets while investing in what makes Fairfax thrive.</p>
+                    <ul style="list-style: none; margin-bottom: 24px;">
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--cream-dark); color: var(--text-light);">✓ Small Business Owner</li>
+                        <li style="padding: 8px 0; border-bottom: 1px solid var(--cream-dark); color: var(--text-light);">✓ Budget Committee</li>
+                        <li style="padding: 8px 0; color: var(--text-light);">✓ Parks & Rec Foundation</li>
+                    </ul>
+                    <a href="https://tom4fairfax.org" target="_blank" class="rep-btn">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS SECTION -->
+    <section class="news-section" id="news" style="background-color: var(--white);">
         <div class="section-inner">
             <div class="section-header">
                 <span class="section-tag">Latest Updates</span>
@@ -765,16 +877,18 @@
         </div>
     </section>
 
-    <!-- GET INVOLVED -->
-    <section class="cta-section" id="get-involved">
+    <!-- CONNECT / NEWSLETTER SECTION -->
+    <section class="cta-section" id="connect">
         <div class="cta-content">
-            <span class="section-tag">Take Action</span>
-            <h2 class="section-title">Get Involved</h2>
-            <p class="cta-text">Stay informed about council decisions, upcoming events, and opportunities to make your voice heard in Fairfax.</p>
-            <form class="signup-form" onsubmit="event.preventDefault(); alert('Thank you for signing up!');">
+            <span class="section-tag">Stay Connected</span>
+            <h2 class="section-title">Join the Conversation</h2>
+            <p class="cta-text">Get updates from Stacy, Rachel, and Tom delivered straight to your inbox. No spam—just the latest news and opportunities to get involved.</p>
+            <form class="signup-form" onsubmit="event.preventDefault(); alert('Thank you for signing up for updates from For You, Fairfax!');">
+                <input type="text" placeholder="Your name" required>
                 <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Stay Updated</button>
+                <button type="submit">Subscribe to Updates</button>
             </form>
+            <p style="color: var(--cream); opacity: 0.7; font-size: 14px; margin-top: 20px;">By subscribing, you'll receive occasional emails about campaign events, council decisions, and ways to engage with your local government.</p>
         </div>
     </section>
 
@@ -790,13 +904,14 @@
                     <div class="footer-col">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="#representatives">Representatives</a></li>
+                            <li><a href="#candidates">Candidates</a></li>
+                            <li><a href="#priorities">Priorities</a></li>
                             <li><a href="#news">News & Updates</a></li>
-                            <li><a href="#get-involved">Get Involved</a></li>
+                            <li><a href="#connect">Connect</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h4>Council Sites</h4>
+                        <h4>Campaign Sites</h4>
                         <ul>
                             <li><a href="https://stacyforfairfax.com" target="_blank">Stacy Hall</a></li>
                             <li><a href="https://rachelforfairfax.com" target="_blank">Rachel McQuillen</a></li>
@@ -807,8 +922,38 @@
             </div>
             <div class="footer-bottom">
                 <p>© 2026 For You, Fairfax. Built with ❤️ for the Fairfax community.</p>
+                <p style="margin-top: 12px; opacity: 0.6; font-size: 12px;">Paid for by the For You, Fairfax Joint Campaign. Not affiliated with Fairfax City Council or the City of Fairfax.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Additional Styles for New Elements -->
+    <style>
+        .rep-quote {
+            font-style: italic;
+            color: var(--text-light);
+            border-left: 4px solid var(--orange);
+            padding-left: 16px;
+            margin: 16px 0 20px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .rep-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        .priority-tag {
+            background-color: var(--green);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+    </style>
 </body>
 </html>

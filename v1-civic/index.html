@@ -4,560 +4,384 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For You, Fairfax | Your Council Hub</title>
+    <meta name="description" content="A joint hub for Fairfax City Council candidates Stacy Hall, Rachel McQuillen, and Tom Peterson. Working together to build a better Fairfax.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="foryoufairfax_logo.png">
+
     <style>
-        /* Reset and Base */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+        /* ── Brand Colors from Logo ── */
         :root {
-            --navy: #1B2A4A;
-            --white: #FFFFFF;
-            --gold: #C9A84C;
-            --light-gray: #F5F5F5;
-            --text-dark: #333333;
-            --text-light: #666666;
+            --bg-white:     #FDFDFD;
+            --navy:         #1B2A4A;
+            --white:        #FFFFFF;
+            --gold:         #C9A84C;
+            --light-gray:   #F5F5F5;
+            --text-dark:    #333333;
+            --text-light:   #666666;
+            /* Candidate accent colors */
+            --stacy-blue:   #2d5a87;
+            --rachel-green: #2a5c3f;
+            --tom-dark:     #1B2A4A;
+            /* Logo colors integrated */
+            --logo-green:   #024724;
+            --logo-medium:  #386A24;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--white);
+            background-color: var(--bg-white);
             color: var(--text-dark);
             line-height: 1.6;
         }
 
-        h1, h2, h3, h4 {
-            font-family: Georgia, 'Times New Roman', serif;
-            color: var(--navy);
-        }
+        h1, h2, h3, h4 { font-family: Georgia, 'Times New Roman', serif; color: var(--logo-green); }
+        a { text-decoration: none; color: inherit; }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Sticky Header */
-        .header {
-            position: sticky;
-            top: 0;
-            background-color: var(--navy);
-            color: var(--white);
-            padding: 1rem 2rem;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: Georgia, serif;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--white);
-        }
-
-        .logo span {
-            color: var(--gold);
-        }
-
-        .nav {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav a {
-            color: var(--white);
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav a:hover {
-            color: var(--gold);
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background-color: var(--white);
-            transition: 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--navy) 0%, #2a3f6f 100%);
-            color: var(--white);
-            padding: 4rem 2rem;
+        /* ── Logo Header ── */
+        .logo-header {
+            background: var(--bg-white);
+            border-bottom: 3px solid var(--logo-green);
+            padding: 0 24px 0;
             text-align: center;
         }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            color: var(--white);
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: var(--gold);
-        }
-
-        .hero-tagline {
-            font-size: 1.25rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-sub {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.7);
-        }
-
-        /* Section Styling */
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--navy);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-        }
-
-        /* Profile Cards Section */
-        .profiles-section {
-            background-color: var(--light-gray);
-            padding: 4rem 2rem;
-        }
-
-        .profile-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .profile-card {
-            background: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .profile-photo {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            font-family: Georgia, serif;
-            font-weight: bold;
-            color: var(--white);
-        }
-
-        .profile-photo.tom { background-color: var(--navy); }
-        .profile-photo.stacy { background-color: #2d5a87; }
-        .profile-photo.rachel { background-color: #4a7c59; }
-
-        .profile-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .profile-name {
-            font-size: 1.4rem;
-            margin-bottom: 0.25rem;
-            color: var(--navy);
-        }
-
-        .profile-title {
-            font-size: 0.9rem;
-            color: var(--gold);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.75rem;
-        }
-
-        .profile-tagline {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            font-style: italic;
-            margin-bottom: 1.25rem;
-        }
-
-        .profile-btn {
-            display: inline-block;
-            background-color: var(--navy);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-        }
-
-        .profile-btn:hover {
-            background-color: var(--gold);
-            color: var(--navy);
-        }
-
-        /* News Section */
-        .news-section {
-            background-color: var(--white);
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .news-card {
-            background: var(--white);
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .news-card:hover {
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .news-date {
-            font-size: 0.85rem;
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .news-headline {
-            font-size: 1.15rem;
-            color: var(--navy);
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-        }
-
-        .news-excerpt {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Stay Connected Section */
-        .connect-section {
-            background-color: var(--navy);
-            color: var(--white);
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .connect-section .section-title {
-            color: var(--white);
-        }
-
-        .connect-section .section-subtitle {
-            color: rgba(255,255,255,0.8);
-        }
-
-        .newsletter-form {
+        .logo-header img {
+            height: 120px;
+            width: auto;
             max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            gap: 1rem;
+            object-fit: contain;
         }
 
-        .newsletter-form input[type="email"] {
-            flex: 1;
-            padding: 0.875rem 1rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
+        /* ── Navigation ── */
+        .header {
+            background: var(--logo-green);
+            color: var(--white);
+            position: sticky; top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(2,71,36,0.25);
+        }
+        .header-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 58px;
+            padding: 0 24px;
+        }
+        .header-logo {
+            font-size: 1.1rem; font-weight: 700;
+            color: var(--white); letter-spacing: 0.02em;
+        }
+        .header-logo span { color: var(--gold); }
+        nav { display: flex; gap: 24px; }
+        nav a { color: rgba(255,255,255,0.85); font-size: 0.88rem; transition: color 0.2s; }
+        nav a:hover { color: var(--gold); }
+        .nav-candidates {
+            display: flex; gap: 10px; margin-left: 16px;
+        }
+        .nav-candidates a {
+            font-size: 0.75rem; font-weight: 600;
+            padding: 4px 12px; border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.2s; color: rgba(255,255,255,0.9);
+        }
+        .nav-candidates a:hover {
+            background: var(--gold); color: var(--logo-green);
+            border-color: var(--gold);
         }
 
-        .newsletter-form input[type="email"]::placeholder {
-            color: #999;
+        /* ── Hero ── */
+        .hero {
+            background: linear-gradient(135deg, var(--logo-green) 0%, #024724 60%, #013820 100%);
+            color: var(--white); text-align: center;
+            padding: 80px 24px;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-content { position: relative; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); color: var(--white); margin-bottom: 16px; }
+        .hero h1 span { color: var(--gold); }
+        .hero-tagline { font-size: 1.15rem; opacity: 0.9; margin-bottom: 20px; line-height: 1.7; }
+        .hero-sub { font-size: 0.95rem; opacity: 0.7; }
+        .hero-candidates {
+            display: flex; justify-content: center; gap: 32px; margin-top: 40px; flex-wrap: wrap;
+        }
+        .hero-candidate {
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            max-width: 200px;
+        }
+        .hero-candidate-logo {
+            width: 80px; height: 80px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; font-weight: 800; letter-spacing: 0.05em;
+            border: 3px solid rgba(255,255,255,0.25); color: var(--white);
+        }
+        .hero-stacy .hero-candidate-logo { background: var(--stacy-blue); }
+        .hero-rachel .hero-candidate-logo { background: var(--rachel-green); }
+        .hero-tom .hero-candidate-logo { background: var(--logo-green); }
+        .hero-candidate-name { font-size: 1rem; font-weight: 700; }
+        .hero-candidate-site { font-size: 0.75rem; opacity: 0.7; }
+        .hero-candidate-quote {
+            font-size: 0.78rem; font-style: italic; opacity: 0.85;
+            max-width: 180px; text-align: center; line-height: 1.5;
         }
 
+        /* ── Profiles ── */
+        .profiles-section { padding: 70px 24px; background: var(--light-gray); }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 8px; }
+        .section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 48px; font-size: 1.05rem; }
+        .profile-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px; max-width: 1100px; margin: 0 auto;
+        }
+        .profile-card {
+            background: var(--white); border-radius: 12px;
+            padding: 32px 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            display: flex; flex-direction: column; gap: 14px;
+            border-top: 4px solid var(--logo-green);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .profile-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+        .profile-header { display: flex; align-items: center; gap: 16px; }
+        .profile-photo {
+            width: 64px; height: 64px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; font-weight: 800; color: var(--white); flex-shrink: 0;
+            letter-spacing: 0.05em;
+        }
+        .profile-photo.stacy { background: var(--stacy-blue); }
+        .profile-photo.rachel { background: var(--rachel-green); }
+        .profile-photo.tom { background: var(--logo-green); }
+        .profile-name { font-size: 1.25rem; font-weight: 700; color: var(--logo-green); }
+        .profile-title { font-size: 0.85rem; color: var(--text-light); }
+        .profile-quote {
+            font-size: 0.9rem; font-style: italic; color: var(--text-dark);
+            padding: 14px 16px; border-left: 3px solid var(--logo-green);
+            background: #f4fdf7; border-radius: 0 8px 8px 0; line-height: 1.6;
+        }
+        .profile-priorities { display: flex; flex-wrap: wrap; gap: 6px; }
+        .priority-tag {
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+            padding: 3px 10px; border-radius: 20px;
+            background: var(--light-gray); color: var(--text-light);
+        }
+        .profile-btn {
+            display: inline-block; text-align: center;
+            background: var(--logo-green); color: var(--white);
+            padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.88rem;
+            transition: background 0.2s; margin-top: auto;
+        }
+        .profile-btn:hover { background: var(--logo-medium); }
+
+        /* ── News ── */
+        .news-section { padding: 70px 24px; }
+        .news-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px; max-width: 1100px; margin: 0 auto;
+        }
+        .news-card {
+            background: var(--white); border-radius: 10px;
+            padding: 24px; box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+            border: 1px solid #eee;
+            border-left: 3px solid var(--logo-green);
+        }
+        .news-date { font-size: 0.78rem; color: var(--logo-green); font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .news-headline { font-size: 1.1rem; font-weight: 700; color: var(--logo-green); margin-bottom: 10px; line-height: 1.4; }
+        .news-excerpt { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+
+        /* ── Connect ── */
+        .connect-section {
+            background: var(--logo-green); color: var(--white); padding: 70px 24px; text-align: center;
+        }
+        .connect-section .section-title { color: var(--white); }
+        .connect-section .section-subtitle { color: rgba(255,255,255,0.7); margin-bottom: 32px; }
+        .newsletter-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; max-width: 480px; margin: 0 auto; }
+        .newsletter-form input { flex: 1; min-width: 220px; padding: 12px 16px; border-radius: 8px; border: none; font-size: 0.95rem; }
         .newsletter-form button {
-            background-color: var(--gold);
-            color: var(--navy);
-            padding: 0.875rem 1.5rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            background: var(--gold); color: var(--logo-green); border: none;
+            padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; cursor: pointer;
+            transition: background 0.2s;
         }
+        .newsletter-form button:hover { background: #e8c060; }
+        .form-note { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 12px; }
 
-        .newsletter-form button:hover {
-            background-color: #ddb94d;
-        }
-
-        .form-note {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            margin-top: 1rem;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #111827;
-            color: var(--white);
-            padding: 3rem 2rem;
-        }
-
+        /* ── Footer ── */
+        .footer { background: var(--logo-green); color: rgba(255,255,255,0.7); padding: 48px 24px 24px; }
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px;
         }
-
-        .footer-brand h3 {
-            font-size: 1.25rem;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-brand h3 span {
-            color: var(--gold);
-        }
-
-        .footer-brand p {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 1rem;
-        }
-
-        .footer-links h4 {
-            font-size: 1rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
+        .footer-brand h3 { font-size: 1.2rem; color: var(--white); margin-bottom: 12px; }
+        .footer-brand h3 span { color: var(--gold); }
+        .footer-brand p { font-size: 0.85rem; line-height: 1.7; }
+        .footer-links h4 { color: var(--white); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+        .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+        .footer-links a { font-size: 0.88rem; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+        .footer-links a:hover { color: var(--gold); }
         .footer-bottom {
-            max-width: 1200px;
-            margin: 2rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.5);
-        }
-
-        .footer-bottom span {
-            color: var(--gold);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .profile-grid,
-            .news-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-            }
+            max-width: 1100px; margin: 32px auto 0;
+            border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px;
+            text-align: center; font-size: 0.78rem;
         }
 
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--navy);
-                flex-direction: column;
-                padding: 1rem 2rem;
-                gap: 1rem;
-            }
-
-            .nav.active {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-tagline {
-                font-size: 1.1rem;
-            }
-
-            .profile-grid,
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
+            nav { display: none; }
+            .hero-candidates { gap: 20px; }
+            .hero-candidate-quote { display: none; }
+            .footer-content { grid-template-columns: 1fr; gap: 24px; }
+            .logo-header img { height: 90px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+
+    <!-- Logo Header -->
+    <div class="logo-header">
+        <img src="foryoufairfax_logo.png" alt="For You Fairfax Logo" />
+    </div>
+
+    <!-- Navigation -->
     <header class="header">
-        <div class="header-container">
-            <a href="#" class="logo">For <span>You</span>, Fairfax</a>
-            <nav class="nav" id="nav">
+        <div class="header-inner">
+            <div class="header-logo">For<span>You</span>Fairfax.com</div>
+            <nav>
                 <a href="#representatives">Representatives</a>
-                <a href="#news">Latest News</a>
+                <a href="#news">News</a>
                 <a href="#connect">Stay Connected</a>
             </nav>
-            <div class="menu-toggle" onclick="document.getElementById('nav').classList.toggle('active')">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-candidates">
+                <a href="https://stacyforfairfax.com" target="_blank">Stacy Hall</a>
+                <a href="https://rachelforfairfax.com" target="_blank">Rachel McQuillen</a>
+                <a href="https://tom4fairfax.org" target="_blank">Tom Peterson</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Three Council Members, <span>One Mission</span></h1>
-            <p class="hero-tagline">Working together to build a stronger, more vibrant Fairfax for all residents.</p>
-            <p class="hero-sub">Stacy Hall, Rachel McQuillen, and Tom Peterson united in service to our community</p>
+            <h1>Three Council Candidates, <span>One Fairfax</span></h1>
+            <p class="hero-tagline">Together, we can create a path toward a more livable, just, and sustainable Fairfax. Every resident deserves a voice — and these three candidates are fighting for exactly that.</p>
+            <div class="hero-candidates">
+                <div class="hero-candidate hero-stacy">
+                    <div class="hero-candidate-logo">SH</div>
+                    <div class="hero-candidate-name">Stacy Hall</div>
+                    <div class="hero-candidate-site">stacyforfairfax.com</div>
+                    <div class="hero-candidate-quote">"This is YOUR city and YOUR voice matters."</div>
+                </div>
+                <div class="hero-candidate hero-rachel">
+                    <div class="hero-candidate-logo">RM</div>
+                    <div class="hero-candidate-name">Rachel McQuillen</div>
+                    <div class="hero-candidate-site">rachelforfairfax.com</div>
+                    <div class="hero-candidate-quote">"Delivering Results for Fairfax City. Focused on What Matters Most."</div>
+                </div>
+                <div class="hero-candidate hero-tom">
+                    <div class="hero-candidate-logo">TP</div>
+                    <div class="hero-candidate-name">Tom Peterson</div>
+                    <div class="hero-candidate-site">tom4fairfax.org</div>
+                    <div class="hero-candidate-quote">"Together, we can create a path toward a more livable, just, and sustainable Fairfax."</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Meet Your Representatives -->
+    <!-- Meet the Candidates -->
     <section class="profiles-section" id="representatives">
-        <h2 class="section-title">Meet Your Representatives</h2>
-        <p class="section-subtitle">Get to know the council members serving Fairfax</p>
+        <h2 class="section-title">Meet the Candidates</h2>
+        <p class="section-subtitle">Get to know the three individuals working to represent every resident of Fairfax City</p>
         <div class="profile-grid">
+
             <!-- Stacy Hall -->
             <div class="profile-card">
-                <div class="profile-photo stacy">SH</div>
-                <div class="profile-info">
-                    <h3 class="profile-name">Stacy Hall</h3>
-                    <p class="profile-title">Fairfax City Council</p>
-                    <p class="profile-tagline">"Engaged leadership means listening to every voice in our community and turning concerns into action."</p>
-                    <a href="https://stacyforfairfax.com" class="profile-btn" target="_blank">Visit My Site →</a>
+                <div class="profile-header">
+                    <div class="profile-photo stacy">SH</div>
+                    <div>
+                        <div class="profile-name">Stacy Hall</div>
+                        <div class="profile-title">Candidate for Fairfax City Council</div>
+                    </div>
                 </div>
+                <div class="profile-quote">"I love our city — these 6.2 square miles and ~24,000 people are our home. I want to keep our charm and small town feel, support our local businesses, and preserve our green spaces and waterways."</div>
+                <div class="profile-priorities">
+                    <span class="priority-tag">Nonpartisanship</span>
+                    <span class="priority-tag">Public Safety</span>
+                    <span class="priority-tag">Fiscal Responsibility</span>
+                    <span class="priority-tag">Environment</span>
+                    <span class="priority-tag">Transparency</span>
+                    <span class="priority-tag">Affordability</span>
+                </div>
+                <a href="https://stacyforfairfax.com" target="_blank" class="profile-btn">Visit Stacy's Site →</a>
             </div>
+
             <!-- Rachel McQuillen -->
             <div class="profile-card">
-                <div class="profile-photo rachel">RM</div>
-                <div class="profile-info">
-                    <h3 class="profile-name">Rachel McQuillen</h3>
-                    <p class="profile-title">Fairfax City Council</p>
-                    <p class="profile-tagline">"Transparent governance and thoughtful collaboration are the foundations of a thriving city."</p>
-                    <a href="https://rachelforfairfax.com" class="profile-btn" target="_blank">Visit My Site →</a>
+                <div class="profile-header">
+                    <div class="profile-photo rachel">RM</div>
+                    <div>
+                        <div class="profile-name">Rachel McQuillen</div>
+                        <div class="profile-title">Candidate for Fairfax City Council</div>
+                    </div>
                 </div>
+                <div class="profile-quote">"We can invest in our community and protect what makes Fairfax City special, but we must do so in a way that is affordable, sustainable, and responsible for our residents."</div>
+                <div class="profile-priorities">
+                    <span class="priority-tag">Economic Vitality</span>
+                    <span class="priority-tag">Affordability</span>
+                    <span class="priority-tag">Traffic & Mobility</span>
+                    <span class="priority-tag">Strong Schools</span>
+                    <span class="priority-tag">Environment</span>
+                    <span class="priority-tag">Responsible Spending</span>
+                </div>
+                <a href="https://rachelforfairfax.com" target="_blank" class="profile-btn">Visit Rachel's Site →</a>
             </div>
+
             <!-- Tom Peterson -->
             <div class="profile-card">
-                <div class="profile-photo tom">TP</div>
-                <div class="profile-info">
-                    <h3 class="profile-name">Tom Peterson</h3>
-                    <p class="profile-title">Fairfax City Council</p>
-                    <p class="profile-tagline">"Together, we can create a path toward a more livable, just, and sustainable Fairfax."</p>
-                    <a href="https://tom4fairfax.org" class="profile-btn" target="_blank">Visit My Site →</a>
+                <div class="profile-header">
+                    <div class="profile-photo tom">TP</div>
+                    <div>
+                        <div class="profile-name">Tom Peterson</div>
+                        <div class="profile-title">Candidate for Fairfax City Council</div>
+                    </div>
                 </div>
+                <div class="profile-quote">"Together, we can create a path toward a more livable, just, and sustainable Fairfax. It takes courage to ask questions — and our community deserves leaders who listen."</div>
+                <div class="profile-priorities">
+                    <span class="priority-tag">Smart Growth</span>
+                    <span class="priority-tag">Fiscal Responsibility</span>
+                    <span class="priority-tag">Sustainability</span>
+                    <span class="priority-tag">Community Engagement</span>
+                    <span class="priority-tag">Infrastructure</span>
+                    <span class="priority-tag">Affordability</span>
+                </div>
+                <a href="https://tom4fairfax.org" target="_blank" class="profile-btn">Visit Tom's Site →</a>
             </div>
+
         </div>
     </section>
 
-    <!-- Latest from the Council -->
-    <section class="section news-section" id="news">
-        <h2 class="section-title">Latest from the Council</h2>
-        <p class="section-subtitle">Stay informed about recent decisions and initiatives</p>
+    <!-- News -->
+    <section class="news-section" id="news">
+        <h2 class="section-title">Latest from the Campaign Trail</h2>
+        <p class="section-subtitle">Follow the candidates' joint initiative and individual priorities</p>
         <div class="news-grid">
-            <!-- News Card 1 -->
             <div class="news-card">
-                <p class="news-date">May 15, 2026</p>
-                <h3 class="news-headline">Council Approves New Community Center Project</h3>
-                <p class="news-excerpt">The Fairfax City Council voted unanimously to fund a new community center in the downtown area, providing vital recreational space for residents of all ages.</p>
+                <p class="news-date">May 20, 2026</p>
+                <h3 class="news-headline">Three Candidates, One Shared Vision for Fairfax</h3>
+                <p class="news-excerpt">Stacy Hall, Rachel McQuillen, and Tom Peterson announce a joint platform focused on affordability, sustainability, and responsible growth — united by the belief that Fairfax works best when its leaders work together.</p>
             </div>
-            <!-- News Card 2 -->
             <div class="news-card">
                 <p class="news-date">May 8, 2026</p>
                 <h3 class="news-headline">Joint Initiative for Sustainable City Planning</h3>
-                <p class="news-excerpt">Council members Peterson and Hall, alongside Councilmember McQuillen, unveiled a comprehensive sustainability plan aimed at reducing the city's carbon footprint by 2030.</p>
+                <p class="news-excerpt">The three candidates unveiled a shared sustainability plan aimed at protecting green spaces, reducing the city's carbon footprint, and ensuring Fairfax remains a place families are proud to call home.</p>
             </div>
-            <!-- News Card 3 -->
             <div class="news-card">
                 <p class="news-date">April 28, 2026</p>
-                <h3 class="news-headline">Public Safety Investment Program Launched</h3>
-                <p class="news-excerpt">A new public safety initiative will allocate additional resources to emergency services and community policing programs throughout Fairfax neighborhoods.</p>
+                <h3 class="news-headline">Community Forum Draws Record Attendance</h3>
+                <p class="news-excerpt">Over 300 residents attended the candidates' joint town hall on public safety and infrastructure, asking tough questions and receiving concrete, actionable answers from all three candidates.</p>
             </div>
         </div>
     </section>
@@ -565,8 +389,8 @@
     <!-- Stay Connected -->
     <section class="connect-section" id="connect">
         <h2 class="section-title">Stay Connected</h2>
-        <p class="section-subtitle">Subscribe for updates on council activities and community events</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+        <p class="section-subtitle">Follow each candidate's campaign for the latest updates and events</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for staying engaged with Fairfax city politics!');">
             <input type="email" placeholder="Enter your email address" required>
             <button type="submit">Subscribe</button>
         </form>
@@ -578,28 +402,29 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <h3>For<span>You</span>Fairfax.com</h3>
-                <p>A community resource hub connecting Fairfax residents with their elected representatives. Stay informed, stay engaged, and help us build a better Fairfax together.</p>
+                <p>A joint campaign hub connecting Fairfax residents with council candidates Stacy Hall, Rachel McQuillen, and Tom Peterson. Stay informed, stay engaged, and help us build a better Fairfax together.</p>
             </div>
             <div class="footer-links">
-                <h4>Your Representatives</h4>
+                <h4>The Candidates</h4>
                 <ul>
-                    <li><a href="https://stacyforfairfax.com" target="_blank">Stacy Hall</a></li>
-                    <li><a href="https://rachelforfairfax.com" target="_blank">Rachel McQuillen</a></li>
-                    <li><a href="https://tom4fairfax.org" target="_blank">Tom Peterson</a></li>
+                    <li><a href="https://stacyforfairfax.com" target="_blank">Stacy Hall — stacyforfairfax.com</a></li>
+                    <li><a href="https://rachelforfairfax.com" target="_blank">Rachel McQuillen — rachelforfairfax.com</a></li>
+                    <li><a href="https://tom4fairfax.org" target="_blank">Tom Peterson — tom4fairfax.org</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#representatives">Representatives</a></li>
-                    <li><a href="#news">Latest News</a></li>
+                    <li><a href="#representatives">Meet the Candidates</a></li>
+                    <li><a href="#news">Campaign News</a></li>
                     <li><a href="#connect">Stay Connected</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 ForYouFairfax.com — A joint project of Fairfax City Council Members <span>•</span> Paid for by the community</p>
+            Paid for and authorized by the joint campaign of Stacy Hall, Rachel McQuillen, and Tom Peterson · © 2026
         </div>
     </footer>
+
 </body>
 </html>

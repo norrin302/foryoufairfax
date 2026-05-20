@@ -8,6 +8,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        /* Logo Banner */
+        .logo-banner {
+            background: #fff;
+            border-bottom: 3px solid #2a5c3f;
+            text-align: center;
+            padding: 12px 24px;
+        }
+        .logo-banner img {
+            height: 100px;
+            width: auto;
+            max-width: 450px;
+            object-fit: contain;
+        }
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -192,6 +205,19 @@
             font-size: 1.75rem;
             font-weight: 500;
             border: 3px solid var(--light-gray);
+        }
+
+        .priority-tag {
+            display: inline-block;
+            background: var(--burnt-orange);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 4px 10px;
+            margin-bottom: 12px;
+            border-radius: 2px;
         }
 
         .profile-card h3 {
@@ -514,6 +540,13 @@
             color: var(--text-light);
         }
 
+        .footer-bottom .disclaimer {
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 900px) {
             .profiles-grid {
@@ -607,6 +640,11 @@
 </head>
 <body>
 
+    <!-- Logo Banner -->
+    <div class="logo-banner">
+        <img src="foryoufairfax_logo.png" alt="For You Fairfax Logo" />
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-inner">
@@ -624,8 +662,8 @@
 
     <!-- Hero -->
     <section class="hero">
-        <h1>Serving Fairfax, Together</h1>
-        <p>Fairfax City Council candidates Stacy Hall, Rachel McQuillen, and Tom Peterson are working hand-in-hand to build a stronger, more vibrant community. From infrastructure to parks, public safety to local business support—their shared commitment is simple: <em>Fairfax works best when its leaders work together.</em></p>
+        <h1>Meet the Candidates</h1>
+        <p>Fairfax City Council candidates <strong>Stacy Hall</strong>, <strong>Rachel McQuillen</strong>, and <strong>Tom Peterson</strong> are working hand-in-hand to build a stronger, more vibrant community. From infrastructure to parks, public safety to local business support—their shared commitment is simple: <em>Fairfax works best when its leaders work together.</em></p>
         <div class="hero-accent"></div>
     </section>
 
@@ -639,6 +677,7 @@
             <div class="profiles-grid">
                 <div class="profile-card">
                     <div class="profile-initials">SH</div>
+                    <span class="priority-tag">Infrastructure</span>
                     <h3>Stacy Hall</h3>
                     <div class="profile-title">Council Member</div>
                     <p class="profile-tagline">"Transparent governance, tangible results."</p>
@@ -651,6 +690,7 @@
                 </div>
                 <div class="profile-card">
                     <div class="profile-initials">RM</div>
+                    <span class="priority-tag">Community</span>
                     <h3>Rachel McQuillen</h3>
                     <div class="profile-title">Council Member</div>
                     <p class="profile-tagline">"Every neighborhood deserves a champion."</p>
@@ -663,6 +703,7 @@
                 </div>
                 <div class="profile-card">
                     <div class="profile-initials">TP</div>
+                    <span class="priority-tag">Fiscal</span>
                     <h3>Tom Peterson</h3>
                     <div class="profile-title">Council Member</div>
                     <p class="profile-tagline">"Fiscal responsibility meets community heart."</p>
@@ -793,6 +834,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 For You, Fairfax. Working together for a stronger community.</p>
+                <p class="disclaimer">Stacy Hall, Rachel McQuillen, and Tom Peterson are candidates for Fairfax City Council. This website is a joint initiative sponsored by their campaigns.</p>
             </div>
         </div>
     </footer>

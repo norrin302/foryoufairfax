@@ -9,6 +9,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* Logo Banner */
+        .logo-banner {
+            background: #fff;
+            border-bottom: 3px solid #1a1a1a;
+            text-align: center;
+            padding: 12px 24px;
+        }
+        .logo-banner img {
+            height: 100px;
+            width: auto;
+            max-width: 450px;
+            object-fit: contain;
+        }
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -216,6 +229,83 @@
 
         .team-card .profile-link:hover {
             gap: 10px;
+        }
+
+        /* ========== CANDIDATE QUOTE ========== */
+        .candidate-quote {
+            font-size: 15px;
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding-left: 16px;
+            border-left: 3px solid var(--color-accent);
+        }
+
+        /* ========== PRIORITY TAGS ========== */
+        .priority-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .priority-tag {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            background: var(--color-dark);
+            color: var(--color-white);
+            border-radius: 2px;
+        }
+
+        /* ========== TEAM CARDS SECTION ========== */
+        .team-cards-section {
+            padding: 100px 24px;
+            background: var(--color-light-gray);
+        }
+
+        .team-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .candidate-card {
+            background: var(--color-white);
+            padding: 40px 32px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .candidate-card .initials-circle {
+            margin: 0 auto 24px;
+        }
+
+        .candidate-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .candidate-card .role {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+        }
+
+        .candidate-card .focus-areas {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
         }
 
         /* ========== NEWS SECTION ========== */
@@ -429,7 +519,12 @@
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- Logo Banner -->
+    <div class="logo-banner">
+        <img src="foryoufairfax_logo.png" alt="For You Fairfax Logo" />
+    </div>
+
+    <!-- Header -->
     <header class="header">
         <div class="header-inner">
             <a href="/" class="wordmark">For You, <span>Fairfax</span></a>
@@ -447,73 +542,73 @@
     <section class="hero">
         <div class="hero-inner">
             <h1>Three Council Members Building One Fairfax</h1>
-            <p class="hero-tagline">Stacy Hall, Rachel McQuillen, and Tom Peterson — working together to represent every resident and shape a stronger future for our city.</p>
+            <p class="hero-tagline">Meet the candidates working together to represent every resident and shape a stronger future for our city.</p>
         </div>
     </section>
 
-    <!-- TEAM -->
+    <!-- CANDIDATE SHOWCASE -->
     <section class="section" id="team">
         <div class="section-inner">
-            <p class="section-title">The Team</p>
-<div class="team-grid">
+            <p class="section-title">The Candidates</p>
+            <div class="team-grid">
                 <!-- Stacy Hall -->
                 <div class="team-card">
                     <div class="initials-circle">SH</div>
                     <h3>Stacy Hall</h3>
-                    <p class="tagline">Engaged leadership that turns community concerns into real action.</p>
+                    <div class="priority-tags">
+                        <span class="priority-tag">Community</span>
+                        <span class="priority-tag">Infrastructure</span>
+                    </div>
+                    <p class="candidate-quote">"I believe in leadership that turns community concerns into real action. Every voice matters in Fairfax."</p>
                     <a href="https://stacyforfairfax.com" class="profile-link" target="_blank" rel="noopener">stacyforfairfax.com →</a>
                 </div>
                 <!-- Rachel McQuillen -->
                 <div class="team-card">
                     <div class="initials-circle">RM</div>
                     <h3>Rachel McQuillen</h3>
-                    <p class="tagline">Focused on smart development, public safety, and modernizing city services.</p>
+                    <div class="priority-tags">
+                        <span class="priority-tag">Development</span>
+                        <span class="priority-tag">Public Safety</span>
+                    </div>
+                    <p class="candidate-quote">"Focused on smart development, public safety, and modernizing city services to work better for all of us."</p>
                     <a href="https://rachelforfairfax.com" class="profile-link" target="_blank" rel="noopener">rachelforfairfax.com →</a>
                 </div>
                 <!-- Tom Peterson -->
                 <div class="team-card">
                     <div class="initials-circle">TP</div>
                     <h3>Tom Peterson</h3>
-                    <p class="tagline">Dedicated to responsible growth and keeping Fairfax affordable for families.</p>
+                    <div class="priority-tags">
+                        <span class="priority-tag">Growth</span>
+                        <span class="priority-tag">Affordability</span>
+                    </div>
+                    <p class="candidate-quote">"Dedicated to responsible growth and keeping Fairfax affordable for families who call this place home."</p>
                     <a href="https://tom4fairfax.org" class="profile-link" target="_blank" rel="noopener">tom4fairfax.org →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NEWS -->
-    <section class="section news-section" id="news">
-        <div class="section-inner">
-            <p class="section-title">Latest Updates</p>
-            <div class="news-grid">
-                <article class="news-item">
-                    <p class="date">MAY 15, 2026</p>
-                    <h3>Council Approves New Community Center Renovation Plan</h3>
-                    <p>After months of public input, the council unanimously voted to fund the upcoming revitalization project for the Greater Fairfax Community Center.</p>
-                </article>
-                <article class="news-item">
-                    <p class="date">MAY 08, 2026</p>
-                    <h3>Holding Town Hall on Proposed Zoning Changes</h3>
-                    <p>All three council members will host a joint town hall on May 22nd to gather resident feedback on the proposed commercial corridor rezoning.</p>
-                </article>
-                <article class="news-item">
-                    <p class="date">APRIL 29, 2026</p>
-                    <h3>Spring Cleanup Initiative Brings Record Participation</h3>
-                    <p>The annual Spring Clean Fairfax program saw a 40% increase in volunteer sign-ups this year, with council members joining community volunteers.</p>
-                </article>
+    <!-- TEAM CARDS -->
+    <section class="team-cards-section" id="team-cards">
+        <div class="team-cards-grid">
+            <div class="candidate-card">
+                <div class="initials-circle">SH</div>
+                <h3>Stacy Hall</h3>
+                <p class="role">Community Advocate</p>
+                <p class="focus-areas">Engaged leadership that turns community concerns into real action. Dedicated to neighborhood connectivity and quality of life improvements.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- SIGNUP -->
-    <section class="section signup-section" id="subscribe">
-        <div class="section-inner">
-            <h2>Stay Informed</h2>
-            <p class="signup-desc">Get updates on council decisions, community events, and what's happening in Fairfax delivered to your inbox.</p>
-            <form class="signup-form" action="#" method="post">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
+            <div class="candidate-card">
+                <div class="initials-circle">RM</div>
+                <h3>Rachel McQuillen</h3>
+                <p class="role">Modernizer</p>
+                <p class="focus-areas">Focused on smart development, public safety, and modernizing city services. Committed to thoughtful, sustainable progress.</p>
+            </div>
+            <div class="candidate-card">
+                <div class="initials-circle">TP</div>
+                <h3>Tom Peterson</h3>
+                <p class="role">Fiscal Steward</p>
+                <p class="focus-areas">Dedicated to responsible growth and keeping Fairfax affordable for families. Championing smart spending and long-term planning.</p>
+            </div>
         </div>
     </section>
 
