@@ -43,9 +43,22 @@
 
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--cream);
+            background-color: var(--white);
             color: var(--text-dark);
             line-height: 1.6;
+        }
+
+        /* ── Subtle Green Tint Sections ── */
+        .reps-section,
+        .cta-section {
+            position: relative;
+        }
+        .reps-section::before,
+        .news-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
         }
 
         /* HEADER */
@@ -171,33 +184,15 @@
 
         .hero p {
             font-size: clamp(18px, 2.5vw, 24px);
-            color: var(--cream);
+            color: rgba(255,255,255,0.9);
             max-width: 700px;
             margin: 0 auto 40px;
             font-weight: 400;
         }
 
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 800;
-            color: var(--gold);
-            line-height: 1;
-        }
-
         .stat-label {
             font-size: 14px;
-            color: var(--cream);
+            color: rgba(255,255,255,0.75);
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 8px;
@@ -239,24 +234,29 @@
             line-height: 1.2;
         }
 
-        /* REPS GRID */
+        /* ── Subtle Green Tint Sections ── */
         .reps-section {
-            background-color: var(--white);
+            background-color: #f0f7f2; /* light mint — logo green at ~5% opacity feel */
+            border-top: 1px solid #e2ede4;
+            border-bottom: 1px solid #e2ede4;
         }
 
-        .reps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
+        .news-section {
+            background-color: #FAFCF9; /* barely-there green tint */
         }
 
+        .cta-section {
+            background: linear-gradient(160deg, #013820 0%, #024724 50%, #024724 100%);
+        }
+
+        /* ── Rep Card: white with green border accent ── */
         .rep-card {
-            background: var(--cream);
+            background: var(--white);
             border-radius: 16px;
             padding: 40px 32px;
             text-align: center;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 3px solid transparent;
+            border: 2px solid #e8f0ea;
             position: relative;
             overflow: hidden;
         }
@@ -268,7 +268,7 @@
             left: 0;
             right: 0;
             height: 6px;
-            background: var(--gold);
+            background: linear-gradient(90deg, var(--green), var(--gold));
             transform: scaleX(0);
             transition: transform 0.4s ease;
         }
@@ -276,11 +276,36 @@
         .rep-card:hover {
             transform: translateY(-8px);
             border-color: var(--green);
-            box-shadow: 0 20px 40px rgba(26, 77, 46, 0.15);
+            box-shadow: 0 20px 40px rgba(2, 71, 36, 0.12);
         }
 
         .rep-card:hover::before {
             transform: scaleX(1);
+        }
+
+        /* ── Footer: deeper, richer green ── */
+        footer {
+            background: #012019; /* almost-black forest green */
+            color: #d4e8d8;
+            padding: 60px 24px 30px;
+        }
+
+        footer .footer-title {
+            color: var(--gold);
+        }
+
+        footer a {
+            color: #a8c4ae;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+
+        footer .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #7a9a7d;
         }
 
         .rep-avatar {
@@ -518,8 +543,8 @@
 
         /* FOOTER */
         footer {
-            background-color: var(--green-dark);
-            color: var(--cream);
+            background: #011a12;
+            color: #c4dac6;
             padding: 60px 24px 30px;
         }
 
