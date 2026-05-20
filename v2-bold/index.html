@@ -60,80 +60,11 @@
         }
 
         /* ══════════════════════════════════════════════
-           HEADER / NAV — logo integrated in green bar
-        ══════════════════════════════════════════════ */
-        .header {
-            background: var(--green);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 16px rgba(2,71,36,0.25);
-        }
-
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 90px;
-            gap: 24px;
-        }
-
-        .header-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-        }
-        .header-logo img {
-            height: 62px;
-            width: auto;
-            max-width: 280px;
-            object-fit: contain;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        nav a {
-            color: rgba(255,255,255,0.82);
-            font-size: 13px;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 6px;
-            transition: all 0.2s;
-            letter-spacing: 0.02em;
-        }
-        nav a:hover {
-            background: rgba(255,255,255,0.12);
-            color: var(--white);
-        }
-        nav a.nav-cta {
-            background: var(--gold);
-            color: var(--green);
-            padding: 8px 20px;
-        }
-        nav a.nav-cta:hover {
-            background: var(--gold-light);
-            color: var(--green);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 28px;
-            cursor: pointer;
-        }
-
-        /* ══════════════════════════════════════════════
-           HERO
+           HERO — with logo above the headline
         ══════════════════════════════════════════════ */
         .hero {
             background: linear-gradient(160deg, var(--green-dark) 0%, var(--green) 55%, var(--green-mid) 100%);
-            padding: 90px 0 100px;
+            padding: 70px 0 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -167,6 +98,15 @@
             max-width: 860px;
             margin: 0 auto;
             padding: 0 32px;
+        }
+
+        .hero-logo {
+            display: block;
+            margin: 0 auto 36px;
+            height: 120px;
+            width: auto;
+            max-width: 480px;
+            object-fit: contain;
         }
 
         .hero h1 {
@@ -622,27 +562,10 @@
 </head>
 <body>
 
-    <!-- Header with Logo -->
-    <header class="header">
-        <div class="container header-inner">
-            <a href="#" class="header-logo">
-                <img src="foryoufairfax_logo.png" alt="For You Fairfax">
-            </a>
-            <nav>
-                <a href="#candidates">Councilmembers</a>
-                <a href="#values">Our Values</a>
-                <a href="#news">News</a>
-                <a href="https://stacyforfairfax.com" target="_blank">Stacy Hall</a>
-                <a href="https://rachelforfairfax.com" target="_blank">Rachel McQuillen</a>
-                <a href="https://tom4fairfax.org" target="_blank">Tom Peterson</a>
-            </nav>
-            <button class="mobile-menu-btn" onclick="document.querySelector('nav').classList.toggle('active')">☰</button>
-        </div>
-    </header>
-
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
+            <img src="foryoufairfax_logo.png" alt="For You Fairfax" class="hero-logo">
             <h1>Three Councilmembers.<br><span>One Fairfax.</span></h1>
             <p class="hero-sub">Stacy Hall, Rachel McQuillen, and Tom Peterson are united in their mission to build a stronger, more vibrant community — one where every resident has a voice and every neighborhood thrives.</p>
         </div>
