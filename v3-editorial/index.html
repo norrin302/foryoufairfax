@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You, Fairfax | Your Council Representatives</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --slate-blue: #4A5568;
+            --warm-white: #FAFAF9;
+            --burnt-orange: #C0573D;
+            --light-gray: #E8E6E3;
+            --text-dark: #2D3748;
+            --text-medium: #4A5568;
+            --text-light: #718096;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--warm-white);
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            color: var(--burnt-orange);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--slate-blue);
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--light-gray);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background: var(--warm-white);
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--slate-blue);
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--burnt-orange);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-medium);
+        }
+
+        nav a:hover {
+            color: var(--burnt-orange);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.25rem;
+            color: var(--slate-blue);
+            margin-bottom: 28px;
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .hero-accent {
+            width: 60px;
+            height: 3px;
+            background: var(--burnt-orange);
+            margin: 32px auto 0;
+        }
+
+        /* Representatives Section */
+        .representatives {
+            padding: 60px 0 80px;
+            background: #fff;
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            color: var(--slate-blue);
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .profile-card {
+            text-align: center;
+            padding: 40px 24px;
+            border: 1px solid var(--light-gray);
+            background: var(--warm-white);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            box-shadow: 0 12px 40px rgba(74, 85, 104, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .profile-initials {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: var(--slate-blue);
+            color: var(--warm-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            border: 3px solid var(--light-gray);
+        }
+
+        .profile-card h3 {
+            font-size: 1.4rem;
+            color: var(--slate-blue);
+            margin-bottom: 6px;
+        }
+
+        .profile-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--burnt-orange);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .profile-tagline {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .profile-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--slate-blue);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .profile-link:hover {
+            color: var(--burnt-orange);
+        }
+
+        .profile-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .profile-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Featured Initiative */
+        .featured {
+            padding: 80px 0;
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .featured-image {
+            background: linear-gradient(135deg, var(--slate-blue) 0%, #5A6578 100%);
+            aspect-ratio: 16/10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .featured-badge {
+            background: var(--burnt-orange);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 8px 16px;
+            position: absolute;
+            top: 24px;
+            left: 24px;
+        }
+
+        .featured-text {
+            padding: 20px 0;
+        }
+
+        .featured-text h2 {
+            font-size: 2.5rem;
+            color: var(--slate-blue);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .featured-text p {
+            color: var(--text-medium);
+            font-size: 1.05rem;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 24px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .featured-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--slate-blue);
+            color: #fff;
+            padding: 14px 28px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--burnt-orange);
+            color: #fff;
+        }
+
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Latest Updates */
+        .updates {
+            padding: 80px 0;
+            background: #fff;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .updates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .update-card {
+            padding: 28px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .update-card:first-child,
+        .update-card:nth-child(2) {
+            padding-top: 0;
+        }
+
+        .update-date {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--burnt-orange);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .update-card h3 {
+            font-size: 1.3rem;
+            color: var(--slate-blue);
+            margin-bottom: 12px;
+            transition: color 0.2s ease;
+        }
+
+        .update-card:hover h3 {
+            color: var(--burnt-orange);
+        }
+
+        .update-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background: var(--slate-blue);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            color: var(--warm-white);
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .newsletter p {
+            color: rgba(250, 250, 249, 0.8);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto 32px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 460px;
+            margin: 0 auto;
+            gap: 12px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--burnt-orange);
+        }
+
+        .newsletter-form button {
+            padding: 14px 28px;
+            background: var(--burnt-orange);
+            color: #fff;
+            border: none;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #a84a32;
+        }
+
+        /* Footer */
+        footer {
+            padding: 48px 0 32px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .footer-brand {
+            max-width: 280px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--slate-blue);
+            margin-bottom: 16px;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+        }
+
+        .footer-bottom {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--light-gray);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            .profiles-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .featured-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .featured-image {
+                order: -1;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-brand {
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .profiles-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .updates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+
+            .featured-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .profile-card {
+                padding: 32px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">For You, <span>Fairfax</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#representatives">Representatives</a></li>
+                    <li><a href="#featured">Initiatives</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#newsletter">Connect</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Serving Fairfax, Together</h1>
+        <p>Fairfax City Council members Tom Hall, Stacy Hall, and Rachel are working hand-in-hand to build a stronger, more vibrant community. From infrastructure to parks, public safety to local business support—their shared commitment is simple: <em>Fairfax works best when its leaders work together.</em></p>
+        <div class="hero-accent"></div>
+    </section>
+
+    <!-- Representatives -->
+    <section class="representatives" id="representatives">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your Representatives</h2>
+                <p>Meet the council members dedicated to representing every voice in Fairfax</p>
+            </div>
+            <div class="profiles-grid">
+                <div class="profile-card">
+                    <div class="profile-initials">TH</div>
+                    <h3>Tom Hall</h3>
+                    <div class="profile-title">Council Member</div>
+                    <p class="profile-tagline">"Fiscal responsibility meets community heart."</p>
+                    <a href="https://tom4fairfax.com" class="profile-link" target="_blank" rel="noopener">
+                        Visit Site
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-initials">SH</div>
+                    <h3>Stacy Hall</h3>
+                    <div class="profile-title">Council Member</div>
+                    <p class="profile-tagline">"Transparent governance, tangible results."</p>
+                    <a href="https://stacyforfairfax.com" class="profile-link" target="_blank" rel="noopener">
+                        Visit Site
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-initials">RF</div>
+                    <h3>Rachel</h3>
+                    <div class="profile-title">Council Member</div>
+                    <p class="profile-tagline">"Every neighborhood deserves a champion."</p>
+                    <a href="https://rachelforfairfax.com" class="profile-link" target="_blank" rel="noopener">
+                        Visit Site
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Initiative -->
+    <section class="featured" id="featured">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-image">
+                    <span class="featured-badge">Featured Initiative</span>
+                </div>
+                <div class="featured-text">
+                    <h2>Fairfax Parks &amp; Recreation Renewal</h2>
+                    <div class="featured-meta">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            Spring 2026
+                        </span>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            City-Wide
+                        </span>
+                    </div>
+                    <p>Council members Hall, Hall, and Rachel have united behind an ambitious plan to revitalize Fairfax's parks and recreation facilities. The initiative includes new playground equipment at Rotary Park, restored trails at Blenheim Forest, and extended community center hours to serve working families.</p>
+                    <a href="#" class="btn-primary">
+                        Read Full Story
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Updates -->
+    <section class="updates" id="news">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Updates</h2>
+                <p>Stay informed about council activities and community news</p>
+            </div>
+            <div class="updates-grid">
+                <article class="update-card">
+                    <div class="update-date">May 15, 2026</div>
+                    <h3>Council Approves Small Business Grant Program</h3>
+                    <p>A new $250,000 grant program will provide financial relief to qualifying Fairfax small businesses facing rising costs.</p>
+                </article>
+                <article class="update-card">
+                    <div class="update-date">May 8, 2026</div>
+                    <h3>Town Hall Meeting Scheduled for June 3</h3>
+                    <p>Residents are invited to discuss the upcoming budget proposal and ask questions of council members in person.</p>
+                </article>
+                <article class="update-card">
+                    <div class="update-date">April 28, 2026</div>
+                    <h3>Main Street Pedestrian Safety Improvements Begin</h3>
+                    <p>New crosswalks, curb extensions, and enhanced lighting will make Fairfax's commercial district safer for all.</p>
+                </article>
+                <article class="update-card">
+                    <div class="update-date">April 19, 2026</div>
+                    <h3>Free Summer Concert Series Returns to颐康 Park</h3>
+                    <p>The beloved annual concert series expands to eight Fridays this summer, featuring local and regional artists.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <h2>Stay Connected</h2>
+            <p>Get council updates, community announcements, and event invitations delivered to your inbox.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <a href="#" class="logo">For You, <span>Fairfax</span></a>
+                    <p>A joint initiative connecting Fairfax residents with their city council representatives.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Representatives</h4>
+                    <ul>
+                        <li><a href="https://tom4fairfax.com" target="_blank" rel="noopener">Tom Hall</a></li>
+                        <li><a href="https://stacyforfairfax.com" target="_blank" rel="noopener">Stacy Hall</a></li>
+                        <li><a href="https://rachelforfairfax.com" target="_blank" rel="noopener">Rachel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#representatives">Our Team</a></li>
+                        <li><a href="#featured">Initiatives</a></li>
+                        <li><a href="#news">News</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>City Resources</h4>
+                    <ul>
+                        <li><a href="https://www.fairfaxva.gov" target="_blank" rel="noopener">Fairfax City Official Site</a></li>
+                        <li><a href="#">City Council Meetings</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 For You, Fairfax. Working together for a stronger community.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

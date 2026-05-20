@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You, Fairfax | Fairfax City Council</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --green: #1A4D2E;
+            --green-dark: #0F2D1A;
+            --green-light: #2A6B42;
+            --cream: #F5F0E8;
+            --cream-dark: #E8E0D0;
+            --orange: #E86C2B;
+            --orange-light: #FF8A4C;
+            --white: #FFFFFF;
+            --text-dark: #1A1A1A;
+            --text-light: #4A4A4A;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--green);
+            padding: 0 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--green-light);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            padding: 100px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: var(--orange);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 400px;
+            height: 400px;
+            background: var(--green-light);
+            opacity: 0.2;
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 7vw, 72px);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero p {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: var(--cream);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--orange);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--cream);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 80px 24px;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background-color: var(--orange);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            color: var(--green);
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        /* REPS GRID */
+        .reps-section {
+            background-color: var(--white);
+        }
+
+        .reps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .rep-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 40px 32px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rep-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--orange);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .rep-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--green);
+            box-shadow: 0 20px 40px rgba(26, 77, 46, 0.15);
+        }
+
+        .rep-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .rep-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--white);
+            margin: 0 auto 24px;
+            position: relative;
+        }
+
+        .rep-card:nth-child(1) .rep-avatar {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+        }
+
+        .rep-card:nth-child(2) .rep-avatar {
+            background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+        }
+
+        .rep-card:nth-child(3) .rep-avatar {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+        }
+
+        .rep-name {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--green);
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .rep-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .rep-tagline {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        .rep-btn {
+            display: inline-block;
+            background-color: var(--green);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--green);
+        }
+
+        .rep-btn:hover {
+            background-color: var(--orange);
+            border-color: var(--orange);
+            transform: scale(1.05);
+        }
+
+        /* NEWS SECTION */
+        .news-section {
+            background-color: var(--cream);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        }
+
+        .news-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-image::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: var(--orange);
+            opacity: 0.3;
+            border-radius: 50%;
+            bottom: -20px;
+            right: -20px;
+        }
+
+        .news-icon {
+            font-size: 48px;
+            color: var(--white);
+            opacity: 0.9;
+        }
+
+        .news-content {
+            padding: 28px;
+        }
+
+        .news-date {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .news-headline {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--green);
+            line-height: 1.3;
+            margin-bottom: 12px;
+        }
+
+        .news-excerpt {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: var(--orange);
+            opacity: 0.08;
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section .section-title {
+            color: var(--white);
+        }
+
+        .cta-section .section-tag {
+            background-color: var(--orange);
+        }
+
+        .cta-text {
+            font-size: 18px;
+            color: var(--cream);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .signup-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .signup-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 16px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: var(--white);
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .signup-form input::placeholder {
+            color: #999;
+        }
+
+        .signup-form button {
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .signup-form button:hover {
+            background: var(--orange-light);
+            transform: scale(1.05);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--green-dark);
+            color: var(--cream);
+            padding: 60px 24px 30px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            color: var(--cream);
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: var(--orange);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--cream);
+            opacity: 0.6;
+        }
+
+        /* MOBILE STYLES */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--green);
+                flex-direction: column;
+                padding: 20px;
+                gap: 8px;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 60px 24px;
+            }
+
+            .hero-stats {
+                gap: 40px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .reps-grid, .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .signup-form {
+                flex-direction: column;
+            }
+
+            .signup-form input,
+            .signup-form button {
+                width: 100%;
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-main">For You, Fairfax</span>
+                <span class="logo-sub">Working Together</span>
+            </div>
+            <button class="mobile-menu-btn" onclick="document.querySelector('nav').classList.toggle('active')">☰</button>
+            <nav>
+                <a href="#representatives">Representatives</a>
+                <a href="#news">News</a>
+                <a href="#get-involved">Get Involved</a>
+                <a href="https://tom4fairfax.com" target="_blank">Tom Hall</a>
+                <a href="https://stacyforfairfax.com" target="_blank">Stacy Hall</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Three Voices.<br><span>One Fairfax.</span></h1>
+            <p>Council Members Tom Hall, Stacy Hall, and Rachel are united in their mission to build a brighter, more inclusive Fairfax City for every resident.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Council Members</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Community Focused</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Your Voice Matters</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REPRESENTATIVES -->
+    <section class="reps-section" id="representatives">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">Your Representatives</span>
+                <h2 class="section-title">Meet the Team</h2>
+            </div>
+            <div class="reps-grid">
+                <!-- Tom Hall -->
+                <div class="rep-card">
+                    <div class="rep-avatar">TH</div>
+                    <h3 class="rep-name">Tom Hall</h3>
+                    <div class="rep-title">Fairfax City Council</div>
+                    <p class="rep-tagline">Committed to fiscal responsibility and sustainable growth while protecting what makes Fairfax special.</p>
+                    <a href="https://tom4fairfax.com" target="_blank" class="rep-btn">Visit My Site →</a>
+                </div>
+                <!-- Stacy Hall -->
+                <div class="rep-card">
+                    <div class="rep-avatar">SH</div>
+                    <h3 class="rep-name">Stacy Hall</h3>
+                    <div class="rep-title">Fairfax City Council</div>
+                    <p class="rep-tagline">Advocate for smart development, public safety, and ensuring every voice is heard in our council chambers.</p>
+                    <a href="https://stacyforfairfax.com" target="_blank" class="rep-btn">Visit My Site →</a>
+                </div>
+                <!-- Rachel -->
+                <div class="rep-card">
+                    <div class="rep-avatar">RN</div>
+                    <h3 class="rep-name">Rachel</h3>
+                    <div class="rep-title">Fairfax City Council</div>
+                    <p class="rep-tagline">Focused on transparency, community engagement, and building bridges across our diverse neighborhoods.</p>
+                    <a href="https://rachelforfairfax.com" target="_blank" class="rep-btn">Visit My Site →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="news-section" id="news">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">Latest Updates</span>
+                <h2 class="section-title">In the News</h2>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-image">
+                        <span class="news-icon">📋</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">May 15, 2026</div>
+                        <h3 class="news-headline">Council Approves New Community Center Initiative</h3>
+                        <p class="news-excerpt">In a unanimous vote, the council advanced plans for a modern community center to serve residents of all ages.</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image">
+                        <span class="news-icon">🌱</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">May 8, 2026</div>
+                        <h3 class="news-headline">Green Initiative Passes First Reading</h3>
+                        <p class="news-excerpt">New sustainability measures aimed at making Fairfax a leader in environmental stewardship move forward.</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-image">
+                        <span class="news-icon">🤝</span>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">April 28, 2026</div>
+                        <h3 class="news-headline">Joint Town Hall Draws Record Attendance</h3>
+                        <p class="news-excerpt">Over 300 residents gathered to discuss the future of Fairfax, showing incredible community engagement.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- GET INVOLVED -->
+    <section class="cta-section" id="get-involved">
+        <div class="cta-content">
+            <span class="section-tag">Take Action</span>
+            <h2 class="section-title">Get Involved</h2>
+            <p class="cta-text">Stay informed about council decisions, upcoming events, and opportunities to make your voice heard in Fairfax.</p>
+            <form class="signup-form" onsubmit="event.preventDefault(); alert('Thank you for signing up!');">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Stay Updated</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">For You, Fairfax</div>
+                    <p class="footer-tagline">A joint initiative by Council Members Tom Hall, Stacy Hall, and Rachel to serve all Fairfax residents.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#representatives">Representatives</a></li>
+                            <li><a href="#news">News & Updates</a></li>
+                            <li><a href="#get-involved">Get Involved</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Council Sites</h4>
+                        <ul>
+                            <li><a href="https://tom4fairfax.com" target="_blank">Tom Hall</a></li>
+                            <li><a href="https://stacyforfairfax.com" target="_blank">Stacy Hall</a></li>
+                            <li><a href="https://rachelforfairfax.com" target="_blank">Rachel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 For You, Fairfax. Built with ❤️ for the Fairfax community.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
