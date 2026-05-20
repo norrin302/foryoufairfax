@@ -1,539 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You, Fairfax — Three Council Members Building One Fairfax</title>
-    <meta name="description" content="A joint hub for Fairfax City Council candidates Tom Peterson, Rachel McQuillen, and Stacy Hall. Working together to build a better Fairfax.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ForYouFairfax — Version Preview</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        :root {
-            --color-dark: #1a1a1a;
-            --color-white: #ffffff;
-            --color-accent: #FF6B35;
-            --color-light-gray: #f5f5f5;
-            --color-mid-gray: #e0e0e0;
-            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+    :root {
+      --bg: #0f1117;
+      --card-bg: #1a1d27;
+      --card-hover: #22263a;
+      --accent: #FF6B35;
+      --accent2: #FFB347;
+      --text: #f0f0f0;
+      --muted: #8a8fa3;
+      --border: #2a2f3e;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
 
-        body {
-            font-family: var(--font-main);
-            background-color: var(--color-white);
-            color: var(--color-dark);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 1.2rem;
+    }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #fff 0%, var(--muted) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
 
-        a:hover {
-            color: var(--color-accent);
-        }
+    .subtitle {
+      color: var(--muted);
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+      max-width: 460px;
+      line-height: 1.6;
+    }
 
-        /* ========== HEADER ========== */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--color-mid-gray);
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 900px;
+    }
 
-        .header-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .wordmark {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: var(--color-dark);
-        }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 16px 16px 0 0;
+    }
 
-        .wordmark span {
-            color: var(--color-accent);
-        }
+    .card:hover {
+      transform: translateY(-3px);
+      background: var(--card-hover);
+      border-color: var(--accent);
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
+    .card-v1::before { background: #C9A84C; }
+    .card-v2::before { background: #E86C2B; }
+    .card-v3::before { background: #C0573D; }
+    .card-v4::before { background: #FF6B35; }
 
-        .nav-links a {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--color-dark);
-            transition: color 0.2s ease;
-        }
+    .card-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
 
-        .nav-links a:hover {
-            color: var(--color-accent);
-        }
+    .card-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
 
-        /* ========== HERO ========== */
-        .hero {
-            padding: 160px 24px 120px;
-            background-color: var(--color-dark);
-            position: relative;
-            overflow: hidden;
-        }
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+      flex: 1;
+    }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(135deg, rgba(255, 107, 53, 0.08) 1px, transparent 1px),
-                linear-gradient(225deg, rgba(255, 107, 53, 0.08) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-        }
+    .candidate-names {
+      font-size: 0.75rem;
+      color: var(--accent2);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-top: 0.3rem;
+    }
 
-        .hero-inner {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
+    .card-arrow {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
 
-        .hero h1 {
-            font-size: clamp(36px, 6vw, 64px);
-            font-weight: 800;
-            color: var(--color-white);
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
-        }
+    .footer {
+      margin-top: 2.5rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-align: center;
+    }
 
-        .hero-tagline {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 400;
-            max-width: 520px;
-        }
-
-        /* ========== TEAM SECTION ========== */
-        .section {
-            padding: 100px 24px;
-        }
-
-        .section-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: 48px;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .team-card {
-            padding: 40px 32px;
-            background: var(--color-light-gray);
-            border-radius: 4px;
-            transition: transform 0.2s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .initials-circle {
-            width: 64px;
-            height: 64px;
-            background: var(--color-dark);
-            color: var(--color-white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
-
-        .team-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.01em;
-        }
-
-        .team-card .tagline {
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 24px;
-            line-height: 1.5;
-        }
-
-        .team-card .profile-link {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--color-accent);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: gap 0.2s ease;
-        }
-
-        .team-card .profile-link:hover {
-            gap: 10px;
-        }
-
-        /* ========== NEWS SECTION ========== */
-        .news-section {
-            background: var(--color-light-gray);
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .news-item {
-            padding: 32px;
-            background: var(--color-white);
-            border-radius: 4px;
-        }
-
-        .news-item .date {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--color-accent);
-            letter-spacing: 0.04em;
-            margin-bottom: 12px;
-        }
-
-        .news-item h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .news-item p {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* ========== SIGNUP SECTION ========== */
-        .signup-section {
-            text-align: center;
-        }
-
-        .signup-section h2 {
-            font-size: clamp(28px, 4vw, 40px);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-        }
-
-        .signup-section .signup-desc {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 40px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .signup-form {
-            display: flex;
-            gap: 12px;
-            max-width: 440px;
-            margin: 0 auto;
-        }
-
-        .signup-form input {
-            flex: 1;
-            padding: 14px 18px;
-            border: 1px solid var(--color-mid-gray);
-            border-radius: 4px;
-            font-size: 15px;
-            font-family: var(--font-main);
-            background: var(--color-white);
-            transition: border-color 0.2s ease;
-        }
-
-        .signup-form input:focus {
-            outline: none;
-            border-color: var(--color-accent);
-        }
-
-        .signup-form input::placeholder {
-            color: #999;
-        }
-
-        .signup-form button {
-            padding: 14px 28px;
-            background: var(--color-dark);
-            color: var(--color-white);
-            border: none;
-            border-radius: 4px;
-            font-size: 15px;
-            font-weight: 600;
-            font-family: var(--font-main);
-            cursor: pointer;
-            transition: background 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .signup-form button:hover {
-            background: var(--color-accent);
-        }
-
-        /* ========== FOOTER ========== */
-        .footer {
-            background: var(--color-dark);
-            color: var(--color-white);
-            padding: 64px 24px;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer .footer-logo {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .footer .footer-logo span {
-            color: var(--color-accent);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        .footer-links a {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            transition: color 0.2s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--color-accent);
-        }
-
-        .footer-copyright {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .footer-brand {
-            text-align: right;
-        }
-
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 900px) {
-            .team-grid,
-            .news-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-            }
-
-            .footer-brand {
-                text-align: center;
-            }
-
-            .footer-links {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .header-inner {
-                height: 64px;
-            }
-
-            .nav-links {
-                gap: 20px;
-            }
-
-            .nav-links a {
-                font-size: 13px;
-            }
-
-            .hero {
-                padding: 120px 24px 80px;
-            }
-
-            .section {
-                padding: 64px 24px;
-            }
-
-            .signup-form {
-                flex-direction: column;
-            }
-
-            .signup-form button {
-                width: 100%;
-            }
-        }
-    </style>
+    .footer a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="header-inner">
-            <a href="/" class="wordmark">For You, <span>Fairfax</span></a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#team">The Team</a></li>
-                    <li><a href="#news">Updates</a></li>
-                    <li><a href="#subscribe">Subscribe</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <div class="badge">Draft Preview</div>
+  <h1>ForYouFairfax.com</h1>
+  <p class="subtitle">Choose a design version below. Each pulls in cues from the candidates' own sites — click through to explore, then pick a favorite to make official.</p>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-inner">
-            <h1>Three Council Members Building One Fairfax</h1>
-            <p class="hero-tagline">Tom Peterson, Stacy Hall, and Rachel McQuillen — working together to represent every resident and shape a stronger future for our city.</p>
-        </div>
-    </section>
+  <div class="grid">
 
-    <!-- TEAM -->
-    <section class="section" id="team">
-        <div class="section-inner">
-            <p class="section-title">The Team</p>
-            <div class="team-grid">
-                <!-- Tom Hall -->
-                <div class="team-card">
-                    <div class="initials-circle">TH</div>
-                    <h3>Tom Peterson</h3>
-                    <p class="tagline">Dedicated to responsible growth and keeping Fairfax affordable for families.</p>
-                    <a href="https://tom4fairfax.com" class="profile-link" target="_blank" rel="noopener">tom4fairfax.com →</a>
-                </div>
-                <!-- Stacy Hall -->
-                <div class="team-card">
-                    <div class="initials-circle">SH</div>
-                    <h3>Stacy Hall</h3>
-                    <p class="tagline">Advocate for transparent government and community-driven decision making.</p>
-                    <a href="https://stacy4fairfax.com" class="profile-link" target="_blank" rel="noopener">stacy4fairfax.com →</a>
-                </div>
-                <!-- Rachel -->
-                <div class="team-card">
-                    <div class="initials-circle">RN</div>
-                    <h3>Rachel McQuillen</h3>
-                    <p class="tagline">Focused on smart development, public safety, and modernizing city services.</p>
-                    <a href="https://rachel4fairfax.com" class="profile-link" target="_blank" rel="noopener">rachel4fairfax.com →</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <a class="card card-v1" href="v1-civic/">
+      <span class="card-tag">Version 1</span>
+      <span class="card-name">🏛️ Civic</span>
+      <span class="card-desc">Navy + gold, official government feel. Inspired by Tom's "Under Maintenance" page — institutional, trustworthy, civic.</span>
+      <span class="candidate-names">Tom Peterson · Stacy Hall · Rachel McQuillen</span>
+      <span class="card-arrow">View →</span>
+    </a>
 
-    <!-- NEWS -->
-    <section class="section news-section" id="news">
-        <div class="section-inner">
-            <p class="section-title">Latest Updates</p>
-            <div class="news-grid">
-                <article class="news-item">
-                    <p class="date">MAY 15, 2026</p>
-                    <h3>Council Approves New Community Center Renovation Plan</h3>
-                    <p>After months of public input, the council unanimously voted to fund the upcoming revitalization project for the Greater Fairfax Community Center.</p>
-                </article>
-                <article class="news-item">
-                    <p class="date">MAY 08, 2026</p>
-                    <h3>Holding Town Hall on Proposed Zoning Changes</h3>
-                    <p>All three council members will host a joint town hall on May 22nd to gather resident feedback on the proposed commercial corridor rezoning.</p>
-                </article>
-                <article class="news-item">
-                    <p class="date">APRIL 29, 2026</p>
-                    <h3>Spring Cleanup Initiative Brings Record Participation</h3>
-                    <p>The annual Spring Clean Fairfax program saw a 40% increase in volunteer sign-ups this year, with council members joining community volunteers.</p>
-                </article>
-            </div>
-        </div>
-    </section>
+    <a class="card card-v2" href="v2-bold/">
+      <span class="card-tag">Version 2</span>
+      <span class="card-name">🌿 Bold</span>
+      <span class="card-desc">Forest green + orange, high-energy editorial. Echoes the bold layout energy of Tom and Stacy's campaign pages.</span>
+      <span class="candidate-names">Tom Peterson · Stacy Hall · Rachel McQuillen</span>
+      <span class="card-arrow">View →</span>
+    </a>
 
-    <!-- SIGNUP -->
-    <section class="section signup-section" id="subscribe">
-        <div class="section-inner">
-            <h2>Stay Informed</h2>
-            <p class="signup-desc">Get updates on council decisions, community events, and what's happening in Fairfax delivered to your inbox.</p>
-            <form class="signup-form" action="#" method="post">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </section>
+    <a class="card card-v3" href="v3-editorial/">
+      <span class="card-tag">Version 3</span>
+      <span class="card-name">📰 Editorial</span>
+      <span class="card-desc">Slate + burnt orange, magazine-style. Captures Rachel's clean, structured campaign site feel with clear priorities and achievements.</span>
+      <span class="candidate-names">Tom Peterson · Stacy Hall · Rachel McQuillen</span>
+      <span class="card-arrow">View →</span>
+    </a>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-info">
-                <div class="footer-logo">For You, <span>Fairfax</span></div>
-                <ul class="footer-links">
-                    <li><a href="https://tom4fairfax.com" target="_blank" rel="noopener">Tom Peterson</a></li>
-                    <li><a href="https://stacy4fairfax.com" target="_blank" rel="noopener">Stacy Hall</a></li>
-                    <li><a href="https://rachel4fairfax.com" target="_blank" rel="noopener">Rachel McQuillen</a></li>
-                </ul>
-                <p class="footer-copyright">© 2026 For You, Fairfax. All rights reserved.</p>
-            </div>
-            <div class="footer-brand">
-                <p style="font-size: 13px; color: rgba(255,255,255,0.4);">A joint initiative of Fairfax City Council</p>
-            </div>
-        </div>
-    </footer>
+    <a class="card card-v4" href="v4-minimal/">
+      <span class="card-tag">Version 4</span>
+      <span class="card-name">⬛ Minimal</span>
+      <span class="card-desc">Near-black + coral, clean modern typography. Inspired by Stacy's organized, content-forward site — bold whitespace, clear hierarchy.</span>
+      <span class="candidate-names">Tom Peterson · Stacy Hall · Rachel McQuillen</span>
+      <span class="card-arrow">View →</span>
+    </a>
+
+  </div>
+
+  <p class="footer">
+    All versions link to candidates' official sites:<br>
+    <a href="https://tom4fairfax.com" target="_blank">Tom Peterson</a> ·
+    <a href="https://stacyforfairfax.com" target="_blank">Stacy Hall</a> ·
+    <a href="https://rachelforfairfax.com" target="_blank">Rachel McQuillen</a>
+    &nbsp;|&nbsp; <a href="https://github.com/norrin302/foryoufairfax">View on GitHub →</a>
+  </p>
 
 </body>
 </html>
